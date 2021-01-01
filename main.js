@@ -1,6 +1,7 @@
+const { response } = require('express');
 const express = require('express');
-
 const app = express();
+const path = require('path');
 
 // the use method allows using a middleware
 // something through which the request object gets passed through
@@ -19,20 +20,30 @@ function getWeather(req, res, next){
     next();
 }
 
+// view engine is responsible for rendering views
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+// let us serve some static files from a directory!
+
+app.use(express.static(path.join(__dirname, "public")));
+
 // before we start listening, we need to setup some routes.
 
 // get takes two arguments first is the route, the second is a function that
 // accepts two arguments: a request object and a response object
 // / - home page
 app.get('/', getWeather, (req, res)=>{
-    res.send(`
-    <h1>What color is the sky on a clear day?</h1>
-    <form action="/result" method="POST">
-        <input type="text" name="color">
-        <button>Submit Answer</button>
-    </form>
-    <p>${req.visitorWeather ? "it is raining" : "it is not raining"}</p>
-    `);
+    // pass the req.visitorWeather property to the home view
+    // we can also pass additional objects or arrays or values to the view as
+    // additional parameters. in this case, we are passing in a pets array, which is 
+    // an array of objects that have name and species property each. 
+    res.render("home", {
+        isRaining: req.visitorWeather,
+        pets:[
+            {name: "Max", species: "dog",}, 
+            {name:"Spark", species: "dog"}
+        ]
+    });
 });
 
 app.get('/about', (req, res)=>{

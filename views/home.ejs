@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    Welcome to the homepage!
+    <h1>What color is the sky on a clear day?</h1>
+    <form action="/result" method="POST">
+        <input type="text" name="color">
+        <button>Submit Answer</button>
+    </form>
+    <% if (isRaining) { %>
+        <p>It is indeed raining.</p>
+    <% } else { %>
+        <p>It is not raining.</p>
+    <% } %>
+    <p>You seem to have a couple of pets!</p>
+    <% pets.forEach(pet => { %>
+        <li><%= pet.name %> (<%= pet.species %>)</li>
+    <% }) %>
+</body>
+</html>

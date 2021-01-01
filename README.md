@@ -60,3 +60,19 @@ some of the popular ones are:
 So in order to avoid learning anything additional, let us get started with ejs. 
 `npm install ejs`
 
+Configure app to use ejs as your view renderer in `main.js`
+Define the path to your `views`. 
+
+Move contents of the form into a new file with an extension `.ejs` into the `views` directory. 
+
+Rerun `npx nodemon main.js`
+
+### Request properties not rendered in file
+
+This is because, you cannot access the request properties directly inside the html. 
+Unless you use some of the special features provided by ejs to do this. 
+
+`<% expression %>` or `<%= object.property %>` within html to be able to render values passed in from the server side. 
+
+And in order to pass the earlier request property to the view, we need to use pass this information as a parameter to the 
+`response.render()` method. This way, the view renderer knows what is to be passed and how it is to be rendered. 
