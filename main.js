@@ -29,9 +29,13 @@ app.get('/about', (req, res)=>{
 });
 
 // form submit handling
-// enable 
+// use middleware - express.urlencoded({extended:false}) 
 app.post("/result", (req, res) => {
-    res.send("Thank you for submitting the form");
+    if (req.body.color.trim().toLowerCase() === "blue"){
+        res.send("Congrats! That is correct!");
+    }else{
+        res.send("Sorry! Incorrect answer, please try again.");
+    }
 });
 
 app.get("/result", (req, res) => {
