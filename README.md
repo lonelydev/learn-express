@@ -43,3 +43,6 @@ That would result in the functions being invoked from left to right in the order
 ### Let us try it out
 
 Create a middleware method `getWeather`
+As written in the comments in the app, invoking `next` method is optional. This is necessary when you want the control to flow through to the 
+next function in the pipeline.
+
