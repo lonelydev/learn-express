@@ -26,3 +26,20 @@ Initially in the program, we write `app.use(middlewarename)` to use a middleware
 In certain cases, you might want to apply a middleware only for a certain set of requests or maybe even just one request. 
 Express allows you to do that too. 
 You can use a different middleware per route.
+
+### Middleware per route
+
+In express, any http method - get, post or whatever, actually takes n number of arguments. 
+In our initial code we only gave it a `(route, (req,res)=>{})`. 
+If you wanted to do different things on your request and response and run it like a pipeline, where 
+one function does something specific to the request, passes it on to the next and so on, then you could easily implement it by 
+using the following format:
+
+```javascript
+   app.get("/", function1, function2, function3);
+```
+That would result in the functions being invoked from left to right in the order that it is provided.
+
+### Let us try it out
+
+Create a middleware method `getWeather`

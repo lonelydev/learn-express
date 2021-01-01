@@ -9,18 +9,27 @@ const app = express();
 // add convenient properties to the body object, to access values for handling
 app.use(express.urlencoded({extended:false}));
 
+// our custom middleware function
+// the last parameter is a way to tell express that 
+// it is time to call the next function in the pipeline
+function getWeather(req, res, next){
+    req.visitorWeather = false;
+    next();
+}
+
 // before we start listening, we need to setup some routes.
 
 // get takes two arguments first is the route, the second is a function that
 // accepts two arguments: a request object and a response object
 // / - home page
-app.get('/', (req, res)=>{
+app.get('/', getWeather, (req, res)=>{
     res.send(`
     <h1>What color is the sky on a clear day?</h1>
     <form action="/result" method="POST">
         <input type="text" name="color">
         <button>Submit Answer</button>
     </form>
+    <p>${req.visitorWeather ? "it is raining" : "it is not raining"}</p>
     `);
 });
 
