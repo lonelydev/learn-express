@@ -46,3 +46,17 @@ Create a middleware method `getWeather`
 As written in the comments in the app, invoking `next` method is optional. This is necessary when you want the control to flow through to the 
 next function in the pipeline.
 
+## Serving HTML from serverside
+
+In the beginning we hardcoded our html within single backticks to do the rendering of the page. 
+In the realworld this is a complete NO. You generally serve a page that is on the server. 
+
+In order to do this in our app, we need to use something called a template engine. Node has plenty of template engines. 
+some of the popular ones are:
+ - handlebared - very popular - nearly 7 million weekly downloads
+ - pug - 1 million downloads per week - Haml based, small learning curve
+ - ejs - 7 million plus downloads per week - js based - little to 0 learning curve. 
+
+So in order to avoid learning anything additional, let us get started with ejs. 
+`npm install ejs`
+
