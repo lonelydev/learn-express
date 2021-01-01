@@ -12,6 +12,8 @@ app.use(express.urlencoded({extended:false}));
 // our custom middleware function
 // the last parameter is a way to tell express that 
 // it is time to call the next function in the pipeline
+// it is not always essential to call next. if your middleware is the 
+// logic to end the pipeline, then you can optionally call next
 function getWeather(req, res, next){
     req.visitorWeather = false;
     next();
