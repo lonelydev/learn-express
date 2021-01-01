@@ -76,3 +76,10 @@ Unless you use some of the special features provided by ejs to do this.
 
 And in order to pass the earlier request property to the view, we need to use pass this information as a parameter to the 
 `response.render()` method. This way, the view renderer knows what is to be passed and how it is to be rendered. 
+
+## Creating api endpoints
+
+What if your route needs to respond with a json?
+
+create a new route to use response.json to convert any object into plain text. 
+serialisation handled by the renderer!

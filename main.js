@@ -64,4 +64,11 @@ app.get("/result", (req, res) => {
     res.send("Why are you visiting this url?");
 });
 
+app.get('/api/pets', (req,res)=>{
+    res.json([
+        {name: "Max", species: "dog",}, 
+        {name:"Spark", species: "dog"}
+    ]);
+})
+
 app.listen(3000);
